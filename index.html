@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bubble Fun!</title>
+	<style>
+
+		body {
+			background-color: cyan;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+
+		.bubble {
+			position: absolute;
+			width: 75px;
+			height: 75px;
+			border-radius: 65%;
+			opacity: 0.8;
+			transition: all 0.3s ease-in-out;
+			animation: bounce 4s infinite;
+		}
+
+		@keyframes bounce {
+			0% {
+				transform: translateY(-50%);
+			}
+			50% {
+				transform: translateY(0);
+			}
+			100% {
+				transform: translateY(-50%);
+			}
+		}
+
+		.bubble:hover {
+			transform: scale(1.4);
+			opacity: 1;
+			animation: none;
+		}
+		h1 {
+			position: relative;
+			font-size: 72px;
+			font-weight: bold;
+			text-transform: uppercase;
+			font-family: "Brush Script MT", cursive;
+  			text-align: center;
+  			margin-top: 100px;
+ 			letter-spacing: 0.2em;
+		}
+		
+		h1::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			width: 100%;
+			height: 100%;
+		}
+		
+		h1 span {
+			position: relative;
+		}
+		
+		h1 span:nth-child(1) {
+			color: #FF4136;
+		}
+		
+		h1 span:nth-child(2) {
+			color: #FF851B;
+		}
+		
+		h1 span:nth-child(3) {
+			color: #FFDC00;
+		}
+		
+		h1 span:nth-child(4) {
+			color: #2ECC40;
+		}
+		
+		h1 span:nth-child(5) {
+			color: #0074D9;
+		}
+		
+		h1 span:nth-child(6) {
+			color: #B10DC9;
+		}
+		
+		h1 span:nth-child(7) {
+			color: #001f3f;
+		}
+	</style>
+</head>
+<body>
+	<h1><span>BU</span><span>BB</span><span>LE</span><span>      </span><span>FUN</span></h1>
+	<script>
+		var colors = ['#FF4136', '#FF851B', '#FFDC00', '#2ECC40', '#0074D9', '#B10DC9', '#001f3f', '#F012BE', '#39CCCC', '#3D9970', '#85144b', '#01FF70', '#FF4136', '#7FDBFF', '#F012BE', '#FF851B', '#7FDBFF', '#B10DC9', '#FFDC00', '#2ECC40', '#0074D9', '#001f3f', '#3D9970', '#39CCCC', '#85144b', '#01FF70', '#FF4136', '#F012BE', '#7FDBFF', '#FF851B'];
+
+		var container = document.body;
+
+		for (var i = 0; i < 70; i++) {
+			var bubble = document.createElement('div');
+			bubble.className = 'bubble';
+			bubble.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+			bubble.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+			bubble.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+			container.appendChild(bubble);
+
+			bubble.addEventListener('mousemove', function(event) {
+				event.target.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+				event.target.style.transition = 'all 0.5s';
+				event.target.style.width = '70px';
+				event.target.style.height = '70px';
+			});
+
+			bubble.addEventListener('mouseleave', function(event) {
+				event.target.style.width = '70px';
+				event.target.style.height = '70px';
+			});
+
+			bubble.addEventListener('mouseover', function(event) {
+				event.target.style.transition = 'background-color 2s';
+			});
+
+			bubble.addEventListener('mouseenter', function(event) {
+				event.target.style.transition = 'background-color 0.5s';
+			});
+
+			bubble.addEventListener('mousemove', function(event) {
+				event.target.style.left = Math.random() * (window.innerWidth - 70) + 'px';
+				event.target.style.top = Math.random() * (window.innerHeight - 70) + 'px';
+			});
+		}
+	</script>
+</body>
+</html>
